@@ -1,0 +1,71 @@
+﻿@model OnlineStore.Models.user
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Your Profile</p>
+                    <h1>Profile Details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<div class="container" style="height: 90vh;">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header text-center bg-primary text-white">
+                    <h3 style="color:white">Your Profile Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>@Html.DisplayNameFor(model => model.name):</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.name)
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>@Html.DisplayNameFor(model => model.email):</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.email)
+                        </div>
+                    </div>
+                    @*<div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>@Html.DisplayNameFor(model => model.password):</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.password)
+                        </div>
+                    </div>*@
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <strong>@Html.DisplayNameFor(model => model.type):</strong>
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.type)
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("Edit Profile", "Edit", new { id = Model.id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Back to Home", "Index", null, new { @class = "btn btn-secondary ml-2" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

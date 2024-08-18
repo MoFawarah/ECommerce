@@ -1,0 +1,143 @@
+﻿@model IEnumerable<OnlineStore.Models.product>
+@{
+    ViewBag.Title = "ShowProducts";
+}
+
+<style>
+
+    a.dd {
+        font-family: 'Poppins', sans-serif;
+        display: inline-block;
+         background-color: white !important; 
+        color: black;
+        padding: 10px 20px;
+    
+        border: 2px solid #051922;
+        display: inline-block;
+        font-weight: 700;
+        font-size: 18px;
+        margin: 15px;
+    }
+
+
+</style>
+
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Shop</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        @Html.ActionLink("All", "ShowProducts", "Home", new { id = "null" }, new { @class = "cart-btn dd active data-filter" })
+
+                        @Html.ActionLink("Veggies", "ShowProducts", "Home", new { id = 1 }, new { @class = "cart-btn dd" })
+                        @Html.ActionLink("Fruits", "ShowProducts", "Home", new { id = 2 }, new { @class = "cart-btn dd" })
+                        @Html.ActionLink("Bread", "ShowProducts", "Home", new { id = 3 }, new { @class = "cart-btn dd" })
+
+
+                        @*<li class="active" data-filter="*">All</li>
+                        <li data-filter=".strawberry">Strawberry</li>
+                        <li data-filter=".berry">Berry</li>
+                        <li data-filter=".lemon">Lemon</li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row product-lists">
+
+
+            @foreach(var item in Model)
+            {
+
+
+            <div class="col-lg-4 col-md-6 text-center strawberry">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product.html"><img src="~/Content//assets/img/products/@item.image_url" alt=""></a>
+                    </div>
+                    <h3>@item.name</h3>
+                    <p class="product-price"><span>Per Kg</span> $@item.price </p>
+
+                   
+
+
+
+                    <a href="@Url.Action("AddToCart", "Home", new { id = @item.id })" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>Add To Cart
+                    </a>
+
+                    <a href="@Url.Action("ProductDetails", "Home", new { id = @item.id })" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>More Details </a>
+
+
+                    
+                </div>
+            </div>
+            }
+            
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a class="active" href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end products -->
+<!-- logo carousel -->
+<div class="logo-carousel-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="logo-carousel-inner">
+                    <div class="single-logo-item">
+                        <img src="~/Content/assets/img/company-logos/1.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="~/Content/assets/img/company-logos/2.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="~/Content/assets/img/company-logos/3.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="~/Content/assets/img/company-logos/4.png" alt="">
+                    </div>
+                    <div class="single-logo-item">
+                        <img src="assets/img/company-logos/5.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end logo carousel -->

@@ -1,0 +1,94 @@
+﻿@model OnlineStore.Models.cart
+
+@{
+    ViewBag.Title = "Your Cart";
+}
+
+
+<style>
+    .container.mt-5 {
+        height: fit-content !important;
+        margin-bottom: 2em;
+    }
+</style>
+
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Cart</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+
+
+
+
+
+
+
+<div class="container mt-5" style="height:70vh;">
+
+
+    @if (Model != null && Model.cart_item.Any())
+    {
+        <table class="table table-bordered table-hover mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.cart_item)
+                {
+                    <tr>
+                        <td><img src="~/Content/assets/img/products/@item.product.image_url" alt="Alternate Text" style="width:50px; height:50px" /></td>
+                        <td>@item.product.name</td>
+                        <td>
+                            <div class="input-group">
+                                @Html.ActionLink("-", "UpdateQuantity", "Home", new { id = item.id, change = -1 }, new { @class = "btn btn-secondary" })
+                                <span class="mx-2">@item.quantity</span>
+                                @Html.ActionLink("+", "UpdateQuantity", "Home", new { id = item.id, change = 1 }, new { @class = "btn btn-secondary" })
+                            </div>
+                        </td>
+                        <td>@item.product.price.ToString("C")</td>
+                        @{
+                            var total = item.quantity * item.product.price;
+
+                        }
+                        <td>@total.ToString("C")</td>
+                        <td>
+                            @Html.ActionLink("Remove", "RemoveFromCart", "Home", new { id = item.id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+
+        <div class="text-right">
+            <h4>Total: @Model.cart_item.Sum(i => i.quantity * i.product.price).ToString("C")</h4>
+            @Html.ActionLink("Checkout", "Checkout", "Home", null, new { @class = "btn btn-success mt-3" })
+        </div>
+    }
+    else
+    {
+        <p>Your cart is empty.</p>
+        @Html.ActionLink("Continue Shopping", "Index", "Home", null, new { @class = "btn btn-primary mt-3" })
+    }
+</div>
+

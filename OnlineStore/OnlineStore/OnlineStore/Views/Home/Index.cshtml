@@ -1,0 +1,182 @@
+﻿@model IEnumerable<OnlineStore.Models.category>
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+
+}
+
+
+<div class="list-section pt-80 pb-80">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Free Shipping</h3>
+                        <p>When order over $75</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="list-box d-flex align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <div class="content">
+                        <h3>24/7 Support</h3>
+                        <p>Get support all day</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="list-box d-flex justify-content-start align-items-center">
+                    <div class="list-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <div class="content">
+                        <h3>Refund</h3>
+                        <p>Get refund within 3 days!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Our</span> Categories</h3>
+                    <p>Explore our diverse range of fresh and high-quality products, carefully curated to meet all your grocery needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.html"><img src="~/Content/assets/img/products/@item.image" alt=""></a>
+                        </div>
+                        <h3>@item.name</h3>
+                        <p class="product-price"><span>Available Kilos</span> @item.quantity </p>
+                        <a href="@Url.Action("ShowProducts", "Home", new { id = @item.id })" class="cart-btn">
+                            <i class="fas fa-shopping-cart"></i>Show All Products
+                        </a>
+
+                    </div>
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<div class="testimonail-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="testimonial-sliders">
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="~/Content/assets/img/avaters/meAvatar.jpg" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Saira Hakim <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="~/Content/assets/img/avaters/avatar2.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>David Niph <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="~/Content/assets/img/avaters/avatar3.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Jacob Sikim <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="abt-section mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="abt-bg">
+                    <a href="https://www.youtube.com/watch?v=Y1aVOCgVjhc" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="abt-text">
+                    <p class="top-sub">Since Year 1999</p>
+                    <h2>We are <span class="orange-text">Fruitkha</span></h2>
+                    <p>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
+                    <a href="/Home/About" class="boxed-btn mt-4">know more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

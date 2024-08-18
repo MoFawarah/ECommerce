@@ -1,0 +1,105 @@
+﻿@model OnlineStore.Models.user
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<style>
+    /* General Styles */
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .bg-image {
+        background-image: url(/Content/assets/img/Register.png); /* Replace with your background image URL */
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+    }
+
+    .login-card {
+        background: rgba(255, 255, 255, 0.85);
+        border: none;
+        border-radius: 15px;
+    }
+
+        .login-card h2 {
+            color: #333;
+        }
+
+        .login-card .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            height: 50px;
+        }
+
+        .login-card .btn-primary {
+            background-color: #f28123;
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        .login-card .btn-outline-primary,
+        .login-card .btn-outline-info {
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        .login-card .btn-outline-primary {
+            border-color: #3b5998;
+            color: #3b5998;
+        }
+
+        .login-card .btn-outline-info {
+            border-color: #00aced;
+            color: #00aced;
+        }
+</style>
+
+<div class="container-fluid bg-image">
+    <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-md-6 col-lg-4">
+            <div class="card register-card p-4 p44">
+                <h2 class="text-center mb-4" style="font-weight: 800; font-size: 3em !important;">Register</h2>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name" } })
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create Account" class="btn btn-primary btn-block" />
+                    </div>
+
+                    <p style="font-size: 0.7em; padding: 0; margin: 0;" class="text-center mt-3">Already have an account? @Html.ActionLink("Login", "Login", "Home")</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
